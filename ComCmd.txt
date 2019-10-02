@@ -1,0 +1,69 @@
+PS C:\Users\Student> function SettingParam
+>> {
+>> param ($one=9)
+>> $one + 1
+>> }
+<# Runs a basic function that adds the one variable to the int one.  
+## The function must be reran/retyped out in order to change the variable
+## You cannot sub in a number for $one as so
+PS C:\> $a = 1 and call function and expect proper result.  
+## Result will be the same as previous.
+
+PS C:\Users\Student>  function SettingParam
+>>  {
+>>  param ($one)
+>>  $one + 1
+>>  }
+
+PS C:\> SettingParam -one 5
+6
+
+<# The following function sets the parameter a different way #>
+
+## PS C:\Users\Student> SettingParam "NewOne"
+## NewOne1
+## PS C:\Users\Student> SettingParam 'NewOne'
+## NewOne1
+
+<#This function appends a string to the int#>
+
+PS C:\Users\Student> SettingParam 'NewOne"
+>>          " '
+NewOne"
+         " 1
+## Messing with the spacing
+
+#####Positional Parameters#####
+A position parameter is a parameter without a prameter name.  
+PS uses the parameter value order to associate each parameter value with
+a parameter in the function.
+PS C:\Users\Student> function NuPosPara {
+>> $arg  = $args[0]
+>> $arg1 = $args[1]
+>> $arg
+>> $arg1
+>> }
+## Whatever the value in the first position of the parameter list
+## will be saved and display in the $arg variable and whatever the value in the
+## second position of the parameter list will be saved and displayed in the second value
+
+PS C:\Users\Student> function NuPosPara {
+>> $arg  = $args[0]
+>> $arg1 = $args[1]
+>> $arg
+>> $arg1
+>> }
+
+
+PS C:\Users\Student> NuPosPara 10 100
+10
+100
+PS C:\Users\Student> NuPosPara 100 10
+100
+10
+PS C:\Users\Student> NuPosPara "FirstTry" , "SecondTry"
+FirstTry
+SecondTry
+PS C:\Users\Student> NuPosPara "2FirstTry" , "1SecondTry"
+2FirstTry
+1SecondTry
